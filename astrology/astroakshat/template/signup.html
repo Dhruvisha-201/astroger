@@ -1,0 +1,151 @@
+<!DOC<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<!-- Mirrored from kamleshyadav.com/html/astrology/version-2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Mar 2023 08:28:58 GMT -->
+<head>
+    <title>Astrology</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- stylesheet -->
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/js/plugin/slick/slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/js/plugin/airdatepicker/datepicker.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/fonts.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}"/>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" type="image/x-icon">
+</head>
+<body>
+    <div class="as_loader">
+        <img src="{% static 'assets/images/loader.png' %}" alt="" class="img-responsive">
+    </div> 
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+                <h4 class="modal-title">Register</h4>
+            </div>
+            <div class="modal-body">
+                <div class="as_login_box active">
+                <form method="POST"  class="needs-validation" novalidate=""  action="/register/">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="FirstName" class="d-block">FirstName</label>
+                        <input type="text" name="FirstName" placeholder="Enter name" class="form-control" id="" value="{{First_Name}}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Last_Name" class="d-block">LastName</label>
+                        <input type="text" name="Last_Name" placeholder="Enter name" class="form-control" id="" value="{{LastName}}"required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Phone_No" class="d-block">Phone No</label>
+                        <input type="number" name="Phone_No" placeholder="Enter your phone number" onKeyPress="if(this.value.length == 10) return false;" class="form-control" id="" value="{{phoneno}}"required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup_email" class="d-block">email</label>
+                        <input type="email" name="signup_email" placeholder="Enter your email" class="form-control" id="" value="{{email}}"required>
+                        {% for message in messages %}
+                        {%if "loginverify" in message.tags %}
+                            <div class="message">
+                                <center><p style = "color:rgb(241, 115, 30)"> {{message}} </p></center>
+                               
+                            </div>
+                        {%endif%}
+                        {% endfor %}
+                        {% for message in messages %}
+                        {%if "e_msg" in message.tags %}
+                            <div class="message">
+                                <center><p style = "color:rgb(241, 115, 30)"> {{message}} </p></center>
+                               
+                            </div>
+                        {%endif%}
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label for="Address" class="d-block">Address</label>
+                        <input type="text" name="Address" placeholder="Enter your Address" class="form-control" id="" value="{{address}}"required>
+                    </div>
+                    <div class="form-group">
+                        <label for="City_name" class="d-block">City Name</label>
+                        <select name = "City_name" class="form-control">
+                            <option value="">Select City</option>
+                            {% for city in citylist %}
+                                <option value="{{city.id}}">{{city.City_Name}}</option>
+                            {% endfor %}
+                        </select>
+                        
+                    </div>
+                    <div class="form-group" >
+                        <label for="State_name" class="d-block">State Name</label>
+                        <input type="text" name="State_name" placeholder="Enter your state" class="form-control" id="" value="{{state}}"required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Country_name" class="d-block">Country Name</label>
+                        <input type="text" name="Country_name" placeholder="Enter country name" class="form-control" id="" value="{{country}}"required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Pincode" class="d-block">Pincode</label>
+                        <input type="text" name="Pincode" placeholder="Enter pincode" class="form-control" id="" value="{{pincode}}"required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="d-block">Password</label>
+                        <input type="password" name="password" placeholder="Enter password" class="form-control" id="" value="{{password}}"required  autocomplete="off">
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmpassword" class="d-block">Confirm Password</label>
+                        <input type="password" name="confirmpassword" placeholder="Enter password" class="form-control" id="" required  autocomplete="off">
+                        {% for message in messages %}
+                        {%if "strongpassword" in message.tags %}
+                            <div class="message">
+                                <center><p style = "color:rgb(241, 115, 30)"> {{message}} </p></center>
+                               
+                            </div>
+                        {%endif%}
+                        {% endfor %}
+                        {% for message in messages %}
+                        {%if "c_pass" in message.tags %}
+                            <div class="message">
+                                <center><p style = "color:rgb(241, 115, 30)"> {{message}} </p></center>
+                               
+                            </div>
+                        {%endif%}
+                        {% endfor %}
+                        <!-- {% for data in messages %}
+                        <span style="color:orangered">{{data}}</span>
+                        {% endfor %} -->
+                    </div>
+
+                
+                    <button type="submit" class="as_btn">Sign Up</button>
+                    <!-- <div class="text-center">
+                        <a href="/register/" class="as_btn">Sign Up</a>
+                    </div> -->
+                    
+                </form>
+                <p class="text-center as_margin0 as_padderTop20">Already Have An Account ? <a href="{% url 'astroakshat:clientlogin' %}" class="as_orange Signin">Signin</a></p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+ <!-- javascript -->
+ <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+ <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+ <script src="{% static 'assets/js/plugin/slick/slick.min.js' %}"></script>
+ <script src="{% static 'assets/js/plugin/countto/jquery.countTo.js' %}"></script>
+ <script src="{% static 'assets/js/plugin/airdatepicker/datepicker.min.js' %}"></script>
+ <script src="{% static 'assets/js/plugin/airdatepicker/i18n/datepicker.en.js' %}"></script>
+ <script src="{% static 'assets/js/custom.js' %}"></script>  
+ </body>
+
+ 
+ <!-- Mirrored from kamleshyadav.com/html/astrology/version-2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Mar 2023 08:29:33 GMT -->
+ </html>

@@ -1,0 +1,28 @@
+{% extends 'client_header.html' %}
+{%load static%}
+{% block content %}
+<section class="as_breadcrum_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <br>
+                <h1>Vastu Shastra</h1> 
+            </div>
+        </div>
+    </div>
+</section>
+<section class="as_appointment_wrapper as_padderTop80 as_padderBottom80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                {% for vastu in vastulist %}
+                <p class="as_font14 as_margin0 as_padderBottom50">{{vastu.title}}</p>
+                <p class="as_font14 as_margin0 as_padderBottom50">{{vastu.description}}</p>
+                {% empty %}
+                <p>No Data Found</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

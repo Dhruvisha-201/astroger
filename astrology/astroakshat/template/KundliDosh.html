@@ -1,0 +1,100 @@
+{% extends 'client_header.html' %}
+{%load static%}
+{% block content %}
+        <section class="as_breadcrum_wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1>Kundli DOsh</h1> 
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="as_zodiac_single_wrapper as_padderTop80 as_padderBottom60">
+            <h2 class="as_heading as_heading_center text-center">Your Genrated KundliDosh List</h2>
+
+            {% for kundli in kundli_id %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-12 col-sm-12">
+                        <div class="as_zodiac_single_inner">
+                            
+                            <div class="as_tab_wrapper">
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="today" role="tabpanel" aria-labelledby="Today">
+                                        <hr>
+                                       <h3 class="as_subheading as_orange"> Name :- {{kundli.name}}</h3>
+                                       <h3 class="as_subheading as_orange"> Date Of Birth :- {{kundli.DOB}}</h3>
+                                       <h3 class="as_subheading as_orange"> Time Of Birth :- {{kundli.time_of_birth}}</h3>
+                                       <h3 class="as_subheading as_orange"> Palce of Birth :- {{kundli.City.City_Name}}</h3>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <center><h2>No Data Found</h2></center>
+            {% endfor %}
+            <br>
+            <br>
+        </section>
+
+
+        <section class="as_appointment_wrapper as_padderTop80 as_padderBottom80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">                      
+                        <div class="as_journal_box_wrapper">
+
+                            <form method="POST" action="/KundliDosh/">
+                                {% csrf_token %}
+                                <h2 class="as_heading as_heading_center text-center">Genrate Your Kundli Dosh</h2>
+
+                                
+
+                                <div class="row">
+                                    <div class="col-lg-12 ">
+                                        <label>name</label>
+                                        <div class="form-group">
+                                            <input type="text" name="name" class="form-control" placeholder="Enter your name" id="" value="{{kundli_name}}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 ">
+                                        <label>Date Of Birth</label>
+                                        <div class="form-group">
+                                            <input type="Date" name="DOB" class="form-control" Placeholder="Date Of Birth" value="{{kundli_DOB}}"  id="" required>   
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 ">
+                                        <label>Time Of Birth</label>
+                                        <div class="form-group">
+                                            <input type="time" name="time_of_birth" class="form-control" placeholder="Time of birth" value="{{kundli_time_of_birth}}" id="" required>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 ">
+                                        <label>Place of Birth</label>
+                                        <div class="form-group">
+                                            <select name = "City" class="form-control">
+                                                <option value="">Select City</option>
+                                                {% for kundli_City in kundlicity %}
+                                                <option value="{{kundli_City.id}}">{{kundli_City.City_Name}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="as_btn">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+          
+      {% endblock %}

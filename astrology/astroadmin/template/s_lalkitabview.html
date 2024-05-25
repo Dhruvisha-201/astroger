@@ -1,0 +1,81 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="section-header-breadcrumb-content">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Lalkitab</h3>
+                        </div>
+                        {% for kitab in lalkitablist %}
+                            <div class="card-body">
+                                {% for message in messages %}
+                                {%if "kitabcreate" in message.tags %}
+                                    <div class="message" id="msgsec">
+                                        <center><p style = "color: green;"> {{message}} </p></center>
+                                        <a href="#" class="del-msg">&times;</a>
+                                    </div>
+                                {%endif%}
+                                {% endfor %}
+                                {% for message in messages %}
+                                {%if "kitabupdated" in message.tags %}
+                                    <div class="message" id="msgsec">   
+                                        <center><p style = "color: green;"> {{message}} </p></center>
+                                        <a href="#" class="del-msg">&times;</a>
+                                    </div>
+                                {%endif%}
+                                {% endfor %}
+                                {% for message in messages %}
+                                {%if "kitabdelete" in message.tags %}
+                                    <div class="message" id="msgsec">
+                                        <center><p style = "color: red;"> {{message}} </p></center>
+                                        <a href="#" class="del-msg">&times;</a>
+                                    </div>
+                                {%endif%}
+                                {% endfor %}
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        
+                                            <p><h2> {{kitab.title}}</h2></p>
+                                            <p><h5>{{kitab.description}} </h5></p>
+                                            <a href="{% url 'astroadmin:lalkitab_update' id=kitab.id %}"><button class="btn btn-primary">Update</button></a>
+                                            <a href="{% url 'astroadmin:lalkitabdelete' id=kitab.id %}" ><button class="btn btn-primary">Delete</button></a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% empty %}
+                        <div class="card-body">
+                            <a href="{% url 'astroadmin:lalkitab_genrate' %}">
+                                <button class="btn btn-primary" style="width:15%;margin-left:80%;">Insert</button>
+                            </a>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <center>No Data Found</center>
+                                </div>
+                            </div>
+                        </div>
+                            
+                                        
+                        {% endfor %}
+                    </div>
+                </div>
+    </section>
+    
+</div>
+{% endblock %}

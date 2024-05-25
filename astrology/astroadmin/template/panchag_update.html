@@ -1,0 +1,126 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="section-header-breadcrumb-content">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Update Today Panchag</h3>
+                        </div>
+                        <div class="card-body">
+                           
+                                <a href="{% url 'astroadmin:daily_panchag_list' %}">
+                                    <button class="btn btn-primary" style="width:20%;margin-left:80%;"> Back To Horoscope List</button>
+                                </a>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <form method="POST" href = "{% url 'astroadmin:daily_panchag_update' id=selectedpanchagid.id %}">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <label>Panchag Date</label>
+                                                <input type="Date" name="panchagdate" placeholder="Select Date" class="form-control" id="" value="{{p_date}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Panchag Day</label>
+                                                <input type="text" name="panchagday" value="{{selectedpanchagid.day}}" placeholder="Enater Day" class="form-control" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Country</label>
+                                                <input type="text" name="panchagcountry" value="{{selectedpanchagid.Country_id}}" placeholder="Enter Country" class="form-control" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>State</label>
+                                                <input type="Text" name="panchagstate" value="{{selectedpanchagid.State_id}}" placeholder="Enter State" class="form-control" id="">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label>City</label>
+                                                
+                                                <select class="form-control" name="cityid">
+                                                    <option value="">Select City</option>
+                                                    {% for city in listofcity %}
+                                                    <option  value="{{city.id}}">{{city.City_Name}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Panchag Sunrise</label>
+                                                <input type="time" name="panchagsunrise" value="{{sunrise_time}}" placeholder="Enter Panchag Sunrise" class="form-control" id="">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>Panchag Sunset</label>
+                                                <input type="time" name="panchagset" value="{{sunset_time}}" placeholder="Enter Panchag Sunset" class="form-control" id="">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>Panchag Moonrise</label>
+                                                <input type="time" name="panchagmoonrise" value="{{moonrise_time}}" placeholder="Enter Panchag Moonrise" class="form-control" id="">
+                                            </div>
+                                           
+                                            <div class="form-group">
+                                                <label>Panchag Moonset</label>
+                                                <input type="time" name="panchagmoonset" value="{{moonset_time}}" placeholder="Enter Panchag Moonset" class="form-control" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Panchag Month</label>
+                                                <select class="form-control" name="monthid">
+                                                    <option value="">Select Month</option>
+                                                    {% for month in monthslist %}
+                                                    <option  value="{{month.id}}">{{month.month_name}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Panchag Tithi</label>
+                                                <input type="text"  name="Panchagtithi" value="{{selectedpanchagid.tithi}}" placeholder="Enetr Tithi" class="form-control" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Vikram Samvat</label>
+                                                <input type="text"  name="vikramsamvat" value="{{selectedpanchagid.vikram_samvat}}" placeholder="Enetr Vikram Samvat" class="form-control" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Samvat Shaka</label>
+                                                <input type="text"  name="samvatshaka" value="{{selectedpanchagid.samvat_shaka}}" placeholder="Enetr Samvat Shaka" class="form-control" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nakshatra</label>
+                                                <input type="text"  name="panchagnakshatra" value="{{selectedpanchagid.nakshatra}}" placeholder="Enetr Nakshatra" class="form-control" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Panchag Yog</label>
+                                                <input type="text"  name="panchagyog" value="{{selectedpanchagid.yog}}" placeholder="Enetr Panchag Yog" class="form-control" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Panchag Karan</label>
+                                                <input type="text"  name="Panchagkaran" value="{{selectedpanchagid.karan}}" placeholder="Enetr Panchag Karan" class="form-control" id="">
+                                            </div>
+                                            <br>
+                                            <button type="submit" class="btn btn-primary" style="width:20%;margin-left:80%;"> Submit </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    
+</div>
+{% endblock %}

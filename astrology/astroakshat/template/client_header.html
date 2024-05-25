@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<!-- Mirrored from kamleshyadav.com/html/astrology/version-2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Mar 2023 08:28:58 GMT -->
+<head>
+    <title>Astrology</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- stylesheet -->
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/js/plugin/slick/slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/js/plugin/airdatepicker/datepicker.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/fonts.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}"/>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" type="image/x-icon">
+
+    <!-- fa fa icon-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="as_loader">
+        <img src="{% static 'assets/images/loader.png' %}" alt="" class="img-responsive">
+    </div> 
+    <div class="as_main_wrapper">
+        <section class="as_header_wrapper">
+            <div class="as_logo">
+                <a href="javascript:;"><img src="{% static 'assets/images/swetakshilogo.png' %}" height="200" width="150" alt=""></a>
+            </div>
+            <div class="as_header_detail">
+                <div class="as_info_detail">
+                    <ul>
+                        <li>
+                            <a href="javascript:;">
+                                <div class="as_infobox">
+                                    <span class="as_infoicon">
+                                        <img src="{% static 'assets/images/svg/headphone.svg' %}" alt="">
+                                    </span>
+                                <span class="as_orange">Talk To Akshat Pandya -</span>+91 8734070137
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <div class="as_infobox">
+                                    <span class="as_infoicon">
+                                        <img src="{% static 'assets/images/svg/headphone.svg' %}" alt="">
+                                    </span>
+                                <span class="as_orange">Talk To Hashmukh Pandya -</span>+91 9825652556
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="as_right_info">
+                        <div class="as_menu">
+                            <ul>
+                                <li>
+                                    <a href="javascript:;">
+                                        <div class="as_infobox">
+                                            <span class="as_infoicon">
+                                                <img src="{% static 'assets/images/svg/login.svg' %}" alt="">
+                                            </span>
+                                        <span class="as_orange">{{cid.FirstName}} {{cid.LastName}}
+                                        </span>
+                                        </div>
+                                    </a>
+                                    <ul class="as_submenu">
+                                        <!-- <li><a href="{% url 'astroakshat:daily_horoscope_view' %}" >Profile</a></li> -->
+                                        <li><a href="{% url 'astroakshat:clientlogout' %}" >Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="as_menu_wrapper">
+                    <span class="as_toggle bg_overlay">
+                        <img src="{% static 'assets/images/svg/menu.svg' %}" alt="">
+                    </span>
+                    <div class="as_menu">
+                        <ul>
+                            <li><a href="{% url 'astroakshat:client_index' %}" class="active">Home</a></li>
+                            <!-- <li><a href="{% url 'astroakshat:daily_horoscope_view' %}" >Daily Horoscope</a></li> -->
+                            <li><a href="javascript:;">Daily</a>
+                                <ul class="as_submenu">
+                                    <li><a href="{% url 'astroakshat:daily_horoscope_view' %}" >Horoscope</a></li>
+                                    <li><a href="{% url 'astroakshat:daily_panchag' %}" >Panchag</a></li>
+                                    <li><a href="{% url 'astroakshat:daily_article' %}" >Article</a></li>
+                                   
+                                    <!-- <li><a href="{% url 'astroakshat:takeappointment' %}">Appointment</a></li> -->
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'astroakshat:Kundliview' %}" >Kundli</a></li>
+                            <li><a href="{% url 'astroakshat:takeappointment' %}" >Appointment</a></li>
+                            <li><a href="{% url 'astroakshat:poojaappointment' %}" >Book Pooja</a></li>
+                            <li><a href="{% url 'astroakshat:MakePayment' %}" >Payment</a></li>
+                            <li><a href="{% url 'astroakshat:contact_us' %}" >contact</a></li>
+                            
+                            
+                        </ul>
+                    </div>
+                    <div class="as_search_wrapper">
+                        <img src="{% static 'assets/images/search.png' %}" alt="" class="as_search">
+
+                        <div class="as_search_boxpopup">
+                            <a href="javascript:;" class="as_cancel"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25px" height="25px" x="0px" y="0px" viewBox="0 0 511.76 511.76" style="enable-background:new 0 0 511.76 511.76;" xml:space="preserve"> <g> <g> <path d="M436.896,74.869c-99.84-99.819-262.208-99.819-362.048,0c-99.797,99.819-99.797,262.229,0,362.048 c49.92,49.899,115.477,74.837,181.035,74.837s131.093-24.939,181.013-74.837C536.715,337.099,536.715,174.688,436.896,74.869z M361.461,331.317c8.341,8.341,8.341,21.824,0,30.165c-4.16,4.16-9.621,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251 l-75.413-75.435l-75.392,75.413c-4.181,4.16-9.643,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251 c-8.341-8.341-8.341-21.845,0-30.165l75.392-75.413l-75.413-75.413c-8.341-8.341-8.341-21.845,0-30.165 c8.32-8.341,21.824-8.341,30.165,0l75.413,75.413l75.413-75.413c8.341-8.341,21.824-8.341,30.165,0 c8.341,8.32,8.341,21.824,0,30.165l-75.413,75.413L361.461,331.317z"/> </g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> </svg></a>
+                            <div class="as_search_inner">
+                                <div class="as_search_widget">
+                                    <input type="text" name="" class="form-control" id="" placeholder="Search...">
+                                    <a href="#"><img src="{% static 'assets/images/svg/search.svg' %}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span class="as_body_overlay"></span>
+            </div>  
+        </section> 
+
+
+
+        {% block content %}
+
+        {% endblock %}
+
+
+
+<section class="as_footer_wrapper as_padderTop80">
+    <div class="container">
+            <div class="as_newsletter_wrapper as_padderBottom60">
+              
+            </div>
+            
+
+            <div class="as_footer_inner as_padderTop50 as_padderBottom80">
+                <div class="row">
+                    
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="as_footer_widget">
+                        <div class="as_footer_logo">
+                            <a href="index.html"><img src="{% static 'assets/images/swetakshilogo.png' %}" alt=""></a>
+                        </div>
+                       <!-- <h3 class="as_footer_heading">Our Services</h3>
+
+                       <ul>
+                           <li><a href="service_detail.html"><span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="8" height="12" viewBox="0 0 8 12"> <path d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" class="cls-1"/> </svg></span> Horoscopes</a></li>
+                           <li><a href="service_detail.html">
+                            <span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="8" height="12" viewBox="0 0 8 12"> <path d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" class="cls-1"/> </svg></span> Gemstones</a></li>
+                           <li><a href="service_detail.html"><span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="8" height="12" viewBox="0 0 8 12"> <path d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" class="cls-1"/> </svg></span> Numerology</a></li>
+                           <li><a href="service_detail.html"><span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="8" height="12" viewBox="0 0 8 12"> <path d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" class="cls-1"/> </svg></span> Tarot Cards</a></li>
+                           <li><a href="service_detail.html"><span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="8" height="12" viewBox="0 0 8 12"> <path d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" class="cls-1"/> </svg></span> Birth Journal</a></li>
+                       </ul> -->
+                    </div>
+                </div>
+                <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="as_footer_widget"> -->
+                       <!-- <h3 class="as_footer_heading">Quick Links</h3>
+
+                       <ul>
+                           <li><a href="about.html"><span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="8" height="12" viewBox="0 0 8 12"> <path d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" class="cls-1"/> </svg></span> About Us</a></li>
+                           <li><a href="blog.html"><span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="8" height="12" viewBox="0 0 8 12"> <path d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" class="cls-1"/> </svg></span> Blog</a></li>
+                           <li><a href="astrologer.html"><span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="8" height="12" viewBox="0 0 8 12"> <path d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" class="cls-1"/> </svg></span> Astrologers</a></li>
+                           <li><a href="appointment.html"><span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="8" height="12" viewBox="0 0 8 12"> <path d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" class="cls-1"/> </svg></span> Appointment</a></li>
+                           <li><a href="contact.html"><span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="8" height="12" viewBox="0 0 8 12"> <path d="M8.000,5.998 L-0.002,11.997 L1.292,5.998 L-0.002,-0.001 L8.000,5.998 ZM1.265,9.924 L6.502,5.998 L1.265,2.071 L2.112,5.998 L1.265,9.924 ZM5.451,5.998 L2.496,8.213 L2.974,5.998 L2.496,3.783 L5.451,5.998 Z" class="cls-1"/> </svg></span> Contact Us</a></li>
+                       </ul> -->
+                    <!-- </div>
+                </div> -->
+                
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="as_footer_widget">
+                       <h3 class="as_footer_heading">Contact Us</h3>
+
+                       <ul class="as_contact_list">
+                           <li>
+                               <img src="{% static 'assets/images/svg/map.svg' %}" alt="">
+                                <p>52 Mahalakshmi shopping center, smriti mandir- vatva canal road, Opp. alok pushpak soc. ahmedabad</p>
+                            </li>
+                           <li>
+                               <img src="{% static 'assets/images/svg/address.svg' %}" alt="">
+                                <p>
+                                    <a href="javascript:;">astrology@example.com</a>
+                                    <a href="javascript:;">astro@example.com</a>
+                                </p> 
+                            </li> 
+                           <li>
+                               <img src="{% static 'assets/images/svg/call.svg' %}" alt="">
+                                <p>
+                                    <a href="javascript:;">+ (91) 8734070137</a><br>
+                                    <a href="javascript:;">+ (91) 9825652556</a>
+                                </p>
+                            </li>
+                       </ul>
+                    </div>
+                </div>
+                </div>
+                
+            </div>
+    </div>
+</section>
+
+</div>
+
+
+<!-- Modal -->
+<div id="as_login" class="modal fade" tabindex="-1" aria-labelledby="as_login" role="dialog">
+<div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+            <h4 class="modal-title">Login</h4>
+        </div>
+        <div class="modal-body">
+            <div class="as_login_box active">
+                <form action="#">
+                    <div class="form-group">
+                        <input type="text" name="" placeholder="Enter email" class="form-control" id="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="" placeholder="Enter password here" class="form-control" id="">
+                    </div>
+                    <div class="form-group">
+                        <div class="as_login_data">
+                            <label>Remember me
+                                 <input type="checkbox" name="as_remember_me" value="">
+                                 <span class="checkmark"></span>
+                            </label>
+                            <a href="#">Forgot password ?</a>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a href="javascript:;" class="as_btn">login</a>
+                    </div>
+                </form>
+                <p class="text-center as_margin0 as_padderTop20">Create An Account ? <a href="javascript:;" class="as_orange as_signup">SignUp</a></p>
+            </div>
+            <div class="as_signup_box">
+                <form action="#">
+                    <div class="form-group">
+                        <input type="text" name="" placeholder="Enter name" class="form-control" id="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="" placeholder="Enter email" class="form-control" id="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="" placeholder="Enter password here" class="form-control" id="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="" placeholder="Enter mobile number" class="form-control" id="">
+                    </div>
+                    <div class="form-group">
+                        <select name="" class="form-control" id="">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div class="text-center">
+                        <a href="javascript:;" class="as_btn">Sign Up</a>
+                    </div>
+                </form>
+                <p class="text-center as_margin0 as_padderTop20">Have An Account ? <a href="javascript:;" class="as_orange as_login">Login</a></p>
+            </div> 
+        </div>
+    </div>
+
+</div>
+</div>
+
+<!-- javascript -->
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/plugin/slick/slick.min.js' %}"></script>
+<script src="{% static 'assets/js/plugin/countto/jquery.countTo.js' %}"></script>
+<script src="{% static 'assets/js/plugin/airdatepicker/datepicker.min.js' %}"></script>
+<script src="{% static 'assets/js/plugin/airdatepicker/i18n/datepicker.en.js' %}"></script>
+<script src="{% static 'assets/js/custom.js' %}"></script>  
+</body>
+
+<!-- Mirrored from kamleshyadav.com/html/astrology/version-2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Mar 2023 08:29:33 GMT -->
+</html>

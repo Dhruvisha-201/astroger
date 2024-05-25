@@ -1,0 +1,82 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="section-header-breadcrumb-content">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Tarrot Reading</h3>
+                        </div>
+                        {% for tarrot in tarrotlist %}
+                            <div class="card-body">
+                                {% for message in messages %}
+                                {%if "tarrotcreate" in message.tags %}
+                                    <div class="message" id="msgsec">
+                                        <center><p style = "color: green;"> {{message}} </p></center>
+                                        <a href="#" class="del-msg">&times;</a>
+                                    </div>
+                                {%endif%}
+                                {% endfor %}
+                                {% for message in messages %}
+                                {%if "tarrotupdated" in message.tags %}
+                                    <div class="message" id="msgsec">   
+                                        <center><p style = "color: green;"> {{message}} </p></center>
+                                        <a href="#" class="del-msg">&times;</a>
+                                    </div>
+                                {%endif%}
+                                {% endfor %}
+                                {% for message in messages %}
+                                {%if "tarrotdelete" in message.tags %}
+                                    <div class="message" id="msgsec">
+                                        <center><p style = "color: red;"> {{message}} </p></center>
+                                        <a href="#" class="del-msg">&times;</a>
+
+                                    </div>
+                                {%endif%}
+                                {% endfor %}
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        
+                                            <p><h2> {{tarrot.title}}</h2></p>
+                                            <p><h5>{{tarrot.description}} </h5></p>
+                                            <a href="{% url 'astroadmin:tarrot_update' id=tarrot.id %}"><button class="btn btn-primary">Update</button></a>
+                                            <a href="{% url 'astroadmin:tarrotdelete' id=tarrot.id %}" ><button class="btn btn-primary">Delete</button></a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% empty %}
+                        <div class="card-body">
+                            <a href="{% url 'astroadmin:tarrot_genrate' %}">
+                                <button class="btn btn-primary" style="width:15%;margin-left:80%;">Insert</button>
+                            </a>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <center>No Data Found</center>
+                                </div>
+                            </div>
+                        </div>
+                            
+                                        
+                        {% endfor %}
+                    </div>
+                </div>
+    </section>
+    
+</div>
+{% endblock %}

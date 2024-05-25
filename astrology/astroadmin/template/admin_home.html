@@ -1,0 +1,174 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="section-header-breadcrumb-content">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Admin Dashboard</h3>
+                        </div>
+                        <div class="card-body">
+                           
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <h5> </h5>
+                                        <h5> </h5>
+                                    </div>
+                                    <center><h3>Kundli Request</h3></center>
+                                    {% for message in messages %}
+                                    {%if "genratedkundlidelete" in message.tags %}
+                                        <div class="message" id="msgsec">
+                                            <center><p style = "color: red;"> {{message}} </p></center>
+                                        </div>
+                                    {%endif%}
+                                    {% endfor %}
+                                    {% for message in messages %}
+                                    {%if "kundlicreate" in message.tags %}
+                                        <div class="message" id="msgsec">
+                                            <center><p style = "color: green;"> {{message}} </p></center>
+                                        </div>
+                                    {%endif%}
+                                    {% endfor %}
+                                    {% for message in messages %}
+                                    {%if "kundliupdate" in message.tags %}
+                                        <div class="message" id="msgsec">
+                                            <center><p style = "color: green;"> {{message}} </p></center> 
+                                        </div>
+                                    {%endif%}
+                                    {% endfor %}
+                                    <div class="table-responsive">
+                                        <table style="width: 100%;">
+                                            <tr align="center">
+                                                <th>Name</th>
+                                                <th>Date Of Birth</th>
+                                                <th>Time Of Birth</th>
+                                                <th>Place Of Birth</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            {% for kundli in kundlirequestlist %}
+                                            <tr align="center">
+                                                <td>{{kundli.kundli_name}}</td>
+                                                <td>{{kundli.kundli_DOB}}</td>
+                                                <td>{{kundli.kundli_time_of_birth}}</td>
+                                                <td>{{kundli.kundli_City.City_Name}}</td>
+                                                <td> 
+                                                    
+                                                    {% if kundli.IsRequest == 0 %}
+                                                    <a href="{% url 'astroadmin:genrate_kundli' id=kundli.id %}"><button class="btn-primary" type="button">Genrate Kundli</button></a>
+                                                    {% elif kundli.IsRequest == 1 %}
+                                                    <a href ="{% url 'astroadmin:update_genrate_kundli' id=kundli.id %}"><i class="fa fa-edit"></i></a> &nbsp;
+                                                    <a href ="{% url 'astroadmin:delete_genrate_kundli' id=kundli.id %}"><i class="fa fa-trash"></i></a>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% empty %}
+                                            <tr><td colspan="4" align="center">No data found</td></tr>
+                                            {% endfor %}
+                                        </table>
+                                    </div>
+                                    <hr>
+                                    <center><h3>Pooja Request</h3></center>
+                                    <div class="table-responsive">
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <th>Pooja Name</th>
+                                                <th>Pooja Date</th>
+                                                <th>Pooja Time</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            {% for pooja in poojarequestlist %}
+                                            <tr>
+                                                <td>{{pooja.pooja_name.pooja_name}}</td>
+                                                <td>{{pooja.preferred_date}}</td>
+                                                <td>{{pooja.preferred_time}}</td>
+                                                <td>
+                                                    {% if pooja.book_request == 0 %}
+                                                    <a href="{% url 'astroadmin:acceptpooja' id=pooja.id %}"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                                    <a href="{% url 'astroadmin:rejectpooja' id=pooja.id %}"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                                    {% elif pooja.book_request == 1 %}
+                                                    Accepted
+                                                    {% elif pooja.book_request == 2 %}
+                                                    Rejected
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% empty %}
+                                            <tr><td colspan="4" align="center">No data found</td></tr>
+                                            {% endfor %}
+                                        </table>
+                                    </div>
+
+                                    <center><h3>Appointment Request</h3></center>
+                                    <div class="table-responsive">
+                                        {% for message in messages %}
+                                        {%if "appoinaccept" in message.tags %}
+                                            <div class="message" id="msgsec">
+                                                <center><p style = "color: green;"> {{message}} </p></center> 
+                                            </div>
+                                        {%endif%}
+                                        {% endfor %}
+                                        {% for message in messages %}
+                                        {%if "appoinreject" in message.tags %}
+                                            <div class="message" id="msgsec">
+                                                <center><p style = "color: red;"> {{message}} </p></center> 
+                                            </div>
+                                        {%endif%}
+                                        {% endfor %}
+                                        <table style="width: 100%;">
+                                            <tr align="center">
+                                                <th>Customer Name</th>
+                                                <th>Cumstomer Email</th>
+                                                <th>Customer Phone Number</th>
+                                                <th>Preferred Date</th>
+                                                <th>Preferred Time</th>
+                                                <th>Reason For Appointment</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            {% for appoin in appointmentrequestlist %}
+                                            <tr align="center">
+                                                <td>{{appoin.c_name}}</td>
+                                                <td>{{appoin.c_Email}}</td>
+                                                <td>{{appoin.c_phoneno}}</td>
+                                                <td>{{appoin.preferred_date}}</td>
+                                                <td>{{appoin.preferred_time}}</td>
+                                                <td>{{appoin.reason_for_appoint}}</td>
+                                                <td>
+                                                    {% if appoin.appoint_status == 0 %}
+                                                    <a href="{% url 'astroadmin:acceptappoint' id=appoin.id %}"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                                    <a href="{% url 'astroadmin:rejectappoint' id=appoin.id %}"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                                    {% elif appoin.appoint_status == 1 %}
+                                                    Accepted
+                                                    {% elif appoin.appoint_status == 2 %}
+                                                    Rejected
+                                                    {% endif %}
+
+                                                </td>
+                                            </tr>
+                                            {% empty %}
+                                            <tr><td colspan="7" align="center">No data found</td></tr>
+                                            {% endfor %}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="section-header-breadcrumb-content">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Update Today Article</h3>
+                        </div>
+                        <div class="card-body">
+                           
+                                <a href="{% url 'astroadmin:daily_artile_list' %}">
+                                    <button class="btn btn-primary" style="width:20%;margin-left:80%;"> Back To Article List</button>
+                                </a>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <form method="POST" href = "{% url 'astroadmin:daily_artile_update' id=selectedid.id %}">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <label>Article Date</label>
+                                                <input type="Date" name="article_date" placeholder="Select Date" class="form-control" id="" value="{{p_date}}">
+                                            </div>
+                                          
+                                            <div class="form-group">
+                                                <label>Article Title</label>
+                                                <input type="Text" name="article_title" placeholder="Enter Article Title" class="form-control" id="" value="{{selectedid.articletitle}}">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label>Article Description</label>
+                                                <textarea name="artivle_description"rows="6" placeholder="Write Article Description Here..." class="form-control" id="">{{selectedid.articledescription}}</textarea>
+                                            </div>
+                                            
+                                            
+                                            
+                                            <br>
+                                            <button type="submit" class="btn btn-primary" style="width:20%;margin-left:80%;"> Submit </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    
+</div>
+{% endblock %}

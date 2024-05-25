@@ -1,0 +1,65 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="section-header-breadcrumb-content">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Update Birth Chart</h3>
+                        </div>
+                        <div class="card-body">
+                           
+                                <a href="{% url 'astroadmin:admin_birthjournal' %}">
+                                    <button class="btn btn-primary" style="width:20%;margin-left:80%;"> Back To Birth Chart List</button>
+                                </a>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <form method="POST" href = "{% url 'astroadmin:update_birthjournal' id=selectedbirthid.id %}">
+                                            {% csrf_token %}
+                                            <div class="col-sm-12">
+                                                <div class="col-md-6">
+                                                    Name :-             {{selectedbirthid.birth_id.name}} <br>
+                                                    Date Of Birth :-    {{selectedbirthid.birth_id.DOB}} <br>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    Time of Birth :-    {{selectedbirthid.birth_id.time_of_birth}} <br>
+                                                    Place of Birth :-   {{selectedbirthid.birth_id.City.City_Name}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Title</label>
+                                                <input type="text" name="kundli_title" placeholder="Enter Title" class="form-control" id="" value="{{selectedbirthid.title}}" required>
+                                            </div>
+                                          
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <textarea type="text" name="kundli_desc" class="form-control" rows="5" placeholder="Write description here">{{selectedbirthid.description}}</textarea>
+                                            </div>
+                                                                                      
+                                            <br>
+                                            <button type="submit" class="btn btn-primary" style="width:20%;margin-left:80%;"> Submit </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    
+</div>
+{% endblock %}

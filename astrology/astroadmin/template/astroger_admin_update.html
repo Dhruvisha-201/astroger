@@ -1,0 +1,63 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="section-header-breadcrumb-content">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Update Astroger Admin</h3>
+                        </div>
+                        <div class="card-body">
+                           
+                                <a href="{% url 'astroadmin:astro_admin_list' %}">
+                                    <button class="btn btn-primary" style="width:20%;margin-left:80%;"> Back To admin List</button>
+                                </a>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <form method="POST" href = "{% url 'astroadmin:astro_admin_update' id=selectedadmin.id %}">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <label>Astroger Name</label>
+                                                <input type="text" name="astro_name" placeholder="Select astro_name" class="form-control" value="{{selectedadmin.astro_name}}" id="" >
+                                             
+                                                
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Astroger Phone No</label>
+                                                <input type="number" name="astrophone_no" placeholder="astrophone_no" class="form-control" value="{{selectedadmin.astrophone_no}}" onKeyPress="if(this.value.length == 10) return false;" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Astroger Email</label>
+                                                <input type="Text" name="astroEmail" placeholder="Enter astroEmail" class="form-control" value="{{selectedadmin.astroEmail}}" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Astroger Location</label>
+                                                <input type="text" rows="4" name="astrolocation" placeholder="Enetr astrolocation" class="form-control"  id="" value="{{selectedadmin.astrolocation}}">
+                                            </div>
+                                            <br>
+                                            <button type="submit" class="btn btn-primary" style="width:20%;margin-left:80%;"> Submit </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    
+</div>
+{% endblock %}

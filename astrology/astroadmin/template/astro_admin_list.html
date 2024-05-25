@@ -1,0 +1,86 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="section-header-breadcrumb-content">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>List Of Admins</h3>
+                        </div>
+                        <div class="card-body">
+                           
+                                <a href="{% url 'astroadmin:astro_admin_insert' %}">
+                                    <button class="btn btn-primary" style="width:15%;margin-left:80%;">Insert</button>
+                                </a>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table style="width: 100%;">
+                                            <tr style="width: 100%;" align="center">
+                                                <th>Sr. No.</th>
+                                                <th>Astroger Name</th>
+                                                <th>Astro Phone No</th>
+                                                <th>Astro Email</th>
+                                                <th>Astro Location</th>
+                                               
+                                                <th>Action</th>
+                                                
+                                            </tr>
+                                            {% for message in messages %}
+                                            {%if "Adminupdate" in message.tags %}
+                                                <div class="message" id="msgsec">
+                                                    <center><p style = "color: green;"> {{message}} </p></center>
+                                                    <!-- <a href="#" class="del-msg">&times;</a> -->
+                                                </div>
+                                            {%endif%}
+                                            {% endfor %}
+                                            {% for message in messages %}
+                                            {%if "Admindelete" in message.tags %}
+                                                <div class="message" id="msgsec">
+                                                    <center><p style = "color: red;"> {{message}} </p></center>
+                                                    <!-- <a href="#" class="del-msg">&times;</a> -->
+                                                </div>
+                                            {%endif%}
+                                            {% endfor %}
+                                            {% for astroadmin in astroadminlist %}
+                                            <tr>
+                                                <td scope="row">{{ forloop.counter }}</td>
+                                                <td>{{astroadmin.astro_name}}</td>
+                                                <td>{{astroadmin.astrophone_no}}</td>
+                                                <td>{{astroadmin.astroEmail}}</td>
+                                                <td>{{astroadmin.astrolocation}}</td>
+                                                
+                                                
+                                                <td align="center">
+                                                    <a href="{% url 'astroadmin:astro_admin_update' id=astroadmin.id %}"><i class="fa fa-edit"></i></a>&nbsp;
+                                                    <a href="{% url 'astroadmin:astro_admin_delete' id=astroadmin.id %}"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                                
+                                            </tr>
+                                            {% empty %}
+                                            <tr><td colspan="18"><center> No Data Found </center></td></tr>
+                                            {% endfor %}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    
+</div>
+{% endblock %}

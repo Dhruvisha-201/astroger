@@ -1,0 +1,59 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="section-header-breadcrumb-content">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Add Tarrot Reading</h3>
+                        </div>
+                        <div class="card-body">
+                           
+                                <a href="{% url 'astroadmin:admin_tarrot' %}">
+                                    <button class="btn btn-primary" style="width:20%;margin-left:80%;"> Back To Vastu List</button>
+                                </a>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <form method="POST" href = "{% url 'astroadmin:tarrot_genrate'  %}">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <label>Title</label>
+                                                <input type="text" name="tarrot_title" placeholder="Enter Title" class="form-control" id="" >
+                                            </div>
+                                          
+
+
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <textarea name="tarrot_desc" rows="6" placeholder="Write Vastu Description Here..." class="form-control" id="" ></textarea>
+                                            </div>
+                                            
+                                            
+                                            
+                                            <br>
+                                            <button type="submit" class="btn btn-primary" style="width:20%;margin-left:80%;"> Submit </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    
+</div>
+{% endblock %}

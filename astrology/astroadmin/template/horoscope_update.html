@@ -1,0 +1,70 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="section-header-breadcrumb-content">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Add Today Horoscope</h3>
+                        </div>
+                        <div class="card-body">
+                           
+                                <a href="{% url 'astroadmin:daily_horoscope_list' %}">
+                                    <button class="btn btn-primary" style="width:20%;margin-left:80%;"> Back To Horoscope List</button>
+                                </a>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <form method="POST" href = "{% url 'astroadmin:daily_horoscope_update' id=selectedhoroid.id %}">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <label>Horoscope Sign</label>
+                                                
+                                                <select name="signid" required>
+                                                    <option value="">Select Sign</option>
+                                                    {% for sign in signlist %}
+                                                    <option value="{{sign.id}}">{{sign.sign_name}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                <!-- <input type="text" name="signid" placeholder="Select Date" class="form-control" value="{{selectedhoroid.sign_id.sign_name}}" id="" disabled> -->
+                                             
+                                                
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Horoscope Date</label>
+                                                <input type="Date" name="selecteddate" placeholder="Select Date" class="form-control" value="{{p_date}}" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Horoscope Title</label>
+                                                <input type="Text" name="horotitle" placeholder="Enter Title" class="form-control" value="{{selectedhoroid.horoscope_title}}" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Horoscope Description</label>
+                                                <textarea type="text" rows="4" name="horodescription" placeholder="Enetr Description" class="form-control"  id="">{{selectedhoroid.horoscope_description}}</textarea>
+                                            </div>
+                                            <br>
+                                            <button type="submit" class="btn btn-primary" style="width:20%;margin-left:80%;"> Submit </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    
+</div>
+{% endblock %}

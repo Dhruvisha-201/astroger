@@ -1,0 +1,150 @@
+{% extends 'client_header.html' %}
+{%load static%}
+{% block content %}
+        <section class="as_breadcrum_wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1>Appointment For Pooja</h1> 
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="as_appointment_wrapper as_padderTop80 as_padderBottom80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="as_heading as_heading_center text-center">Make Your Appointment To Discuss Any Problem.</h2>
+                        
+
+                        <div class="as_journal_box_wrapper">
+                            <form method="post" href="{% url 'astroakshat:poojaappointment' %}">
+                                {% csrf_token %}
+                                <!-- <h3 class="text-center as_subheading">Appointment For Pooja</h3> -->
+                                
+                            
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <label>name</label>
+                                    <div class="form-group">
+                                        <input class="form-control" name="cname" type="text" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <label>email</label>
+                                    <div class="form-group">
+                                        <input class="form-control" type="email" name="cemail" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <label>mobile number</label>
+                                    
+                                    <div class="form-group">
+                                        <input class="form-control" type="number" name="cnumber" onKeyPress="if(this.value.length == 10) return false;" placeholder="Mobile Number">
+                                    </div>
+                                </div>
+                                
+                               
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <label>Preferred  Date</label>
+                                    <div class="form-group">
+                                        <input class="form-control" name="pdate"  type="date"  placeholder="Select Date">
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <label>Preferred Time</label>
+                                    <input class="form-control" type="time" name="ptime" placeholder="Select Time">
+                                           
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <label>Pooja</label>
+                                    <div class="form-group">
+                                        <select class="form-control" name="poojaname">
+                                            <option value="">Select Pooja</option>
+                                            {% for pooja in poojalist %}
+                                            <option value="{{pooja.id}}">{{pooja.pooja_name}}</option>
+                                            {% empty %}
+                                            <option>No Data Found</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <label>Reason for appointment</label>
+                                    <div class="form-group">
+                                        <textarea placeholder="Message" name="resoanappoint" class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                                {% for message in messages %}
+                                {%if "appoinreq" in message.tags %}
+                                    <div class="message" id="msgsec">
+                                        <center><p style = "color: green;"> {{message}} </p></center>
+                                        <!-- <a href="#" class="del-msg">&times;</a> -->
+                                    </div>
+                                {%endif%}
+                                {% endfor %}
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center as_padderTop20">
+                                    <button type="submit" class="as_btn">make an appointment</button>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="as_customer_wrapper as_padderBottom80 as_padderTop80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1 class="as_heading as_heading_center">Your Appointments List</h1>
+                      
+                        <table style="width: 100%;">
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Preferred date</th>
+                                <th>Preferred Time</th>
+                                <th>Reason For Appointment</th>
+                                <th>Request Status</th>
+                            </tr>
+                            
+                            {% for appointment in clientappoins %}
+                            <tr>
+                                <td>{{appointment.c_name}}</td>
+                                <td>{{appointment.c_Email}}</td>
+                                <td>{{appointment.c_phoneno}}</td>
+                                <td>{{appointment.preferred_date}}</td>
+                                <td>{{appointment.preferred_time}}</td>
+                                <td>{{appointment.reason_for_appoint}}</td>
+                                <td>
+                                    {% if appointment.book_request == 0 %}
+                                    Pending
+                                    {% elif appointment.book_request == 1 %}
+                                    Accept
+                                    {% elif appointment.book_request == 2 %}
+                                    Reject
+                                    {% endif %}
+                                </td>
+                                
+                            </tr>
+                            {% empty %}
+                            <tr><td colspan="6" style="color: orangered;"><center><h3>No Data Found</h3></center></td></tr>
+                            {% endfor%}
+
+                        </table>
+                          
+                    </div>
+
+                </div>
+            </div>
+        </section>
+          
+      {% endblock %}

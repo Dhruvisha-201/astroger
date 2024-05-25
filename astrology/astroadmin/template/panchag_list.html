@@ -1,0 +1,100 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="section-header-breadcrumb-content">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Daily Panchag</h3>
+                        </div>
+                        <div class="card-body">
+                           
+                                <a href="{% url 'astroadmin:daily_panchag_insert' %}">
+                                    <button class="btn btn-primary" style="width:15%;margin-left:80%;">Insert</button>
+                                </a>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table style="width: 100%;">
+                                            <tr style="width: 100%;" align="center">
+                                                <th>Sr. No.</th>
+                                                <th>Date</th>
+                                                <th>Day</th>
+                                                <th>Country</th>
+                                                <th>State</th>
+                                                <th>City</th>
+                                                <th>Sunrise</th>
+                                                <th>Sunset</th>
+                                                <th>Moonrise</th>
+                                                <th>Moonset</th>
+                                                <th>Month</th>
+                                                <th>Tithi</th>
+                                                <th>Vikram Samvat</th>
+                                                <th>Samvat Shaka</th>
+                                                <th>Nakshatra</th>
+                                                <th>Yog</th>
+                                                <th>Karan</th>
+                                                <th>Action</th>
+                                                
+                                            </tr>
+                                            {% for message in messages %}
+                                            {%if "panchagdelete" in message.tags %}
+                                                <div class="message" id="msgsec">
+                                                    <center><p style = "color: green;"> {{message}} </p></center>
+                                                    <!-- <a href="#" class="del-msg">&times;</a> -->
+                                                </div>
+                                            {%endif%}
+                                            {% endfor %}
+                                            {% for panchag in panchaglist %}
+                                            <tr>
+                                                <td scope="row">{{ forloop.counter }}</td>
+                                                <td>{{panchag.date}}</td>
+                                                <td>{{panchag.day}}</td>
+                                                <td>{{panchag.Country_id}}</td>
+                                                <td>{{panchag.State_id}}</td>
+                                                <td>{{panchag.City_id.City_Name}}</td>
+                                                <td>{{panchag.sunrise}}</td>
+                                                <td>{{panchag.sunset}}</td>
+                                                <td>{{panchag.moonrise}}</td>
+                                                <td>{{panchag.moonset}}</td>
+                                                <td>{{panchag.month}}</td>
+                                                <td>{{panchag.tithi}}</td>
+                                                <td>{{panchag.vikram_samvat}}</td>
+                                                <td>{{panchag.samvat_shaka}}</td>
+                                                <td>{{panchag.nakshatra}}</td>
+                                                <td>{{panchag.yog}}</td>
+                                                <td>{{panchag.karan}}</td>
+                                                
+                                                <td align="center">
+                                                    <a href="{% url 'astroadmin:daily_panchag_update' id=panchag.id %}"><i class="fa fa-edit"></i></a>&nbsp;
+                                                    <a href="{% url 'astroadmin:daily_panchag_delete' id=panchag.id %}"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                                
+                                            </tr>
+                                            {% empty %}
+                                            <tr><td colspan="18"><center> No Data Found </center></td></tr>
+                                            {% endfor %}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    
+</div>
+{% endblock %}

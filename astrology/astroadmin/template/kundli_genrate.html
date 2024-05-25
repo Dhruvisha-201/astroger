@@ -1,0 +1,77 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="section-header-breadcrumb-content">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Genrate Kundli</h3>
+                        </div>
+                        <div class="card-body">
+                           
+                                <a href="{% url 'astroadmin:kundli_list' %}">
+                                    <button class="btn btn-primary" style="width:20%;margin-left:80%;"> Back To Kundli List</button>
+                                </a>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <form method="POST" href = "{% url 'astroadmin:genrate_kundli' id=selectedid.id %}">
+                                            {% csrf_token %}
+                                            <div class="col-sm-12">
+                                                <div class="col-md-6">
+                                                    Name :-             {{selectedid.kundli_name}} <br>
+                                                    Date Of Birth :-    {{selectedid.kundli_DOB}} <br>
+                                                    <!-- Time of Birth :-    {{selectedid.kundli_time_of_birth}} <br>
+                                                    Place of Birth :-   {{selectedid.kundli_City.City_Name}} -->
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <!-- Name :-             {{selectedid.kundli_name}} <br>
+                                                    Date Of Birth :-    {{selectedid.kundli_DOB}} <br> -->
+                                                    Time of Birth :-    {{selectedid.kundli_time_of_birth}} <br>
+                                                    Place of Birth :-   {{selectedid.kundli_City.City_Name}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Title</label>
+                                                <input type="text" name="kundli_title" placeholder="Enter Title" class="form-control" id="" required>
+                                            </div>
+                                          
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <textarea type="text" name="kundli_desc" class="form-control" rows="5" placeholder="Write description here"></textarea>
+                                                <!-- <input type="number" name="astrophone_no" onKeyPress="if(this.value.length == 10) return false;" placeholder="Enter Astroger Phone Number" class="form-control" id="" required> -->
+                                            </div>
+                                            <!-- <div class="form-group">
+                                                <label>Astro Email</label>
+                                                <input type="email" name="astroEmail" placeholder="Enter Astroger Email" class="form-control" id="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Astro Location</label>
+                                                <input type="text" name="astrolocation" placeholder="Enter Astroger Location" class="form-control" id="" required> 
+                                            </div>                                            -->
+                                            <br>
+                                            <button type="submit" class="btn btn-primary" style="width:20%;margin-left:80%;"> Submit </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    
+</div>
+{% endblock %}

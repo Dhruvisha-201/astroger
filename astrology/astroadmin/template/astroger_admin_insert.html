@@ -1,0 +1,62 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="section-header-breadcrumb-content">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Add Admin</h3>
+                        </div>
+                        <div class="card-body">
+                           
+                                <a href="{% url 'astroadmin:astro_admin_list' %}">
+                                    <button class="btn btn-primary" style="width:20%;margin-left:80%;"> Back To Admin List</button>
+                                </a>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <form method="POST" href = "{% url 'astroadmin:astro_admin_insert' %}">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <label>Astro Name</label>
+                                                <input type="text" name="astroname" placeholder="Enter Astroger Name" class="form-control" id="" required>
+                                            </div>
+                                          
+                                            <div class="form-group">
+                                                <label>Astroger Phone No</label>
+                                                <input type="number" name="astrophone_no" onKeyPress="if(this.value.length == 10) return false;" placeholder="Enter Astroger Phone Number" class="form-control" id="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Astro Email</label>
+                                                <input type="email" name="astroEmail" placeholder="Enter Astroger Email" class="form-control" id="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Astro Location</label>
+                                                <input type="text" name="astrolocation" placeholder="Enter Astroger Location" class="form-control" id="" required> 
+                                            </div>                                           
+                                            <br>
+                                            <button type="submit" class="btn btn-primary" style="width:20%;margin-left:80%;"> Submit </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    
+</div>
+{% endblock %}

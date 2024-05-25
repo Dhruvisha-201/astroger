@@ -1,0 +1,576 @@
+{% extends 'client_header.html' %}
+{%load static%}
+{% block content %}
+    <section class="as_banner_wrapper">
+        <div class="container-fluid">
+            <div class="row as_verticle_center">
+                <div class="col-lg-6 order-lg-1 col-md-6 order-md-1 col-sm-12 order-sm-1 col-12 order-2">
+                    <div class="as_banner_slider">
+                        <h1>Daily Article</h1>
+                        {% for article in dailyarticle %}
+                        <div class="as_banner_detail">
+                            <h5>{{article.articletitle}}</h5>
+                            <!-- <h1>Read Your Daily <br> Horoscope Today</h1> -->
+                            <p>{{article.articledescription}}</p>
+                            <!-- <a href="javascript:;" class="as_btn">read more</a> -->
+                        </div>
+                        {% empty %}
+                        No Data Found
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-2 col-md-6 order-md-2 col-sm-12 order-sm-2 col-12 order-1">
+                    <div class="as_banner_img text-center">
+                        <img src="{% static 'assets/images/banner_image.png' %}" alt="" class="img-responsive">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+
+    
+
+    
+    <section class="as_about_wrapper as_padderTop80 as_padderBottom80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                    <div>
+                        <div>
+                            <div >
+                                <img src="{% static 'assets/images/about1.jpg' %}" alt="" class="img-responsive">
+                            </div> 
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                    <h1 class="as_heading">know about Astrology</h1>
+                    <h3>"Welcome to the world of celestial wisdom and insight! We are Akshat Pandya and Hasmukh Pandya, 
+                        a father-son duo of experienced astrologers dedicated to unraveling the mysteries of the cosmos and guiding 
+                        you on your life's journey. With a combined passion for astrology that spans generations, 
+                        our mission is to provide you with profound astrological insights, personalized readings, 
+                        and invaluable guidance to help you navigate the cosmic currents. Explore the cosmic tapestry with us, 
+                        and let the stars illuminate your path towards a brighter future."</h3>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="as_service_wrapper as_padderTop80 as_padderBottom80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="as_heading as_heading_center">our services</h1>
+                    <!-- <p class="as_font14 as_padderBottom5">Consectetur adipiscing elit, sed do eiusmod tempor incididuesdeentiut labore <br>etesde dolore magna aliquapspendisse and the gravida.</p> -->
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="as_service_box text-center">
+                        <span class="as_icon">
+                            <img src="{% static 'assets/images/svg/service1.svg' %}" alt="">                                   
+                        </span>
+
+                        <h4 class="as_subheading">Vastu Shastra</h4>
+                        <!-- <p>Consectetur adipiscing elit sed do <br>eiusmod tempor incididunt.</p> -->
+                        <a href="{% url 'astroakshat:S_vastushastra' %}" class="as_link">read more</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="as_service_box text-center">
+                        <span class="as_icon">
+                            <img src="{% static 'assets/images/svg/service2.svg' %}" alt="">                                   
+                        </span>
+
+                        <h4 class="as_subheading">Birth Chart</h4>
+                        <!-- <p>Consectetur adipiscing elit sed do <br>eiusmod tempor incididunt.</p> -->
+                        <a href="{% url 'astroakshat:birthjournal' %}" class="as_link">read more</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="as_service_box text-center">
+                        <span class="as_icon">
+                            <img src="{% static 'assets/images/svg/service3.svg' %}" alt="">                                   
+                        </span>
+
+                        <h4 class="as_subheading">Kundli Milap</h4>
+                        <!-- <p>Consectetur adipiscing elit sed do <br>eiusmod tempor incididunt.</p> -->
+                        <a href="{% url 'astroakshat:ManglikDosha' %}" class="as_link">read more</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="as_service_box text-center">
+                        <span class="as_icon">
+                            <img src="{% static 'assets/images/svg/service7.svg' %}" alt="">                                 
+                        </span>
+
+                        <h4 class="as_subheading">Tarot Reading</h4>
+                        <!-- <p>Consectetur adipiscing elit sed do <br>eiusmod tempor incididunt.</p> -->
+                        <a href="{% url 'astroakshat:s_tarrotreading' %}" class="as_link">read more</a>
+                    </div>
+                </div>
+                
+                <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="as_service_box text-center">
+                        <span class="as_icon">
+                            <img src="{% static 'assets/images/svg/service5.svg' %}" alt="">                                
+                        </span>
+
+                        <h4 class="as_subheading">Match Matching</h4>
+                        <p>Consectetur adipiscing elit sed do <br>eiusmod tempor incididunt.</p>
+                        <a href="{% url 'astroakshat:birthjournal' %}" class="as_link">read more</a>
+                    </div>
+                </div> -->
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="as_service_box text-center">
+                        <span class="as_icon">
+                            <img src="{% static 'assets/images/svg/service6.svg' %}" alt="">                                
+                        </span>
+
+                        <h4 class="as_subheading">Kundli Dosh</h4>
+                        <!-- <p>Consectetur adipiscing elit sed do <br>eiusmod tempor incididunt.</p> -->
+                        <a href="{% url 'astroakshat:KundliDosh' %}" class="as_link">read more</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="as_service_box text-center">
+                        <span class="as_icon">
+                            <img src="{% static 'assets/images/svg/service4.svg' %}" alt="">                               
+                        </span>
+
+                        <h4 class="as_subheading">Lal Kitab</h4>
+                        <!-- <p>Consectetur adipiscing elit sed do <br>eiusmod tempor incididunt.</p> -->
+                        <a href="{% url 'astroakshat:s_lalkitab' %}" class="as_link">read more</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="as_service_box text-center">
+                        <span class="as_icon">
+                            <img src="{% static 'assets/images/svg/service8.svg' %}" alt="">                                 
+                        </span>
+
+                        <h4 class="as_subheading">Palm Reading</h4>
+                        <!-- <p>Consectetur adipiscing elit sed do <br>eiusmod tempor incididunt.</p> -->
+                        <a href="{% url 'astroakshat:s_palmreading' %}" class="as_link">read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- <section class="as_zodiac_sign_wrapper as_padderTop80 as_padderBottom80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1 class="as_heading as_heading_center">choose zodiac sign</h1>
+                        <p class="as_font14 as_margin0">Consectetur adipiscing elit, sed do eiusmod tempor incididuesdeentiut labore <br>etesde dolore magna aliquapspendisse and the gravida.</p>
+
+
+                        <div class="as_zodiac_inner text-left">
+                            <div class="row as_verticle_center">
+                                <div class="col-lg-3 col-md-12 col-sm-12 col-12">
+                                    <ul class="as_sign_ul">
+                                        <li class="as_sign_box">
+                                            <a href="zodiac_single.html">
+                                                <span class="as_sign">
+                                                <img src="{% static 'assets/images/svg/sign1.svg' %}" alt="">
+                                                </span>
+                                                <div>
+                                                    <h5>Aries</h5>
+                                                    <p>Mar 21 - Apr 19</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="as_sign_box">
+                                            <a href="zodiac_single.html">
+                                                <span class="as_sign">
+                                                <img src="{% static 'assets/images/svg/sign2.svg' %}" alt="">
+                                                </span>
+                                                <div>
+                                                    <h5>Taurus </h5>
+                                                    <p>Mar 21 - Apr 19</p>
+                                                    <section class="as_know_sign_wrapper as_padderBottom80 as_padderTop80">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-lg-12 text-center">
+                                                                    <h1 class="as_heading as_heading_center">Know Your Zodiac Sign</h1>
+                                                                    <p class="as_font14 as_margin0 as_padderBottom50">Consectetur adipiscing elit, sed do eiusmod tempor incididuesdeentiut labore <br>etesde dolore magna aliquapspendisse and the gravida.</p>
+                                                             
+                                                             
+                                                                    <div class="as_sign_form text-left">
+                                                                        <ul> 
+                                                                            <li class="as_form_box">
+                                                                                <h3 class="as_subheading">Date Of Birth</h3>
+                                                                                <div class="as_input_feild">
+                                                                                    <input type="text" name="" class="form-control as_datepicker" placeholder="DD/MM/YYYY" id="">
+                                                                                    <span><img src="{% static 'assets/images/svg/date.svg' %}" alt=""></span>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="as_form_box">
+                                                                                <h3 class="as_subheading">Time Of Birth</h3>
+                                                                                <div class="as_input_feild">
+                                                                                    <input type="text" name="" class="form-control as_timepicker" placeholder="08:00" id="">
+                                                                                    <span><img src="{% static 'assets/images/svg/time.svg' %}" alt=""></span>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="as_form_box">
+                                                                                <h3 class="as_subheading">Place Of Birth</h3>
+                                                                                <div class="as_input_feild"> 
+                                                                                    <input type="text" name="" class="form-control" placeholder="Enter City Name...." id="">
+                                                                                    <span><img src="{% static 'assets/images/svg/map1.svg' %}" alt=""></span>
+                                                                                </div> 
+                                                                            </li>
+                                                                            <li class="as_form_box">
+                                                                               <a href="javascript:;" class="as_btn">find zodiac</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                    <section class="as_customer_wrapper as_padderBottom80 as_padderTop80">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-lg-12 text-center">
+                                                                    <h1 class="as_heading as_heading_center">What Our Customers Say</h1>
+                                                                    <p class="as_font14 as_margin0 as_padderBottom50">Consectetur adipiscing elit, sed do eiusmod tempor incididuesdeentiut labore <br>etesde dolore magna aliquapspendisse and the gravida.</p>
+                                                                </div>
+                                            
+                                                                    <div class="row as_customer_slider">
+                                                                        <div class="col-lg-6 col-md-6">
+                                                                            <div class="as_customer_box text-center">
+                                                                                <span class="as_customer_img">
+                                                                                    <img src="{% static 'assets/images/customer1.jpg' %}" alt="">
+                                                                                    <span><img src="{% static 'assets/images/svg/quote1.svg' %}" alt=""></span>
+                                                                                </span>
+                                                                                <p class="as_margin0">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravidaesdisus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+                                                                                <h3 >David Parker</h3>
+                                                                                <p class="as_margin0">Astrologer</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6 col-md-6">
+                                                                            <div class="as_customer_box text-center">
+                                                                                <span class="as_customer_img">
+                                                                                    <img src="{% static 'assets/images/customer2.jpg' %}" alt="">
+                                                                                    <span><img src="{% static 'assets/images/svg/quote1.svg' %}" alt=""></span>
+                                                                                </span>
+                                                                                <p class="as_margin0">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravidaesdisus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+                                                                                <h3 >John Parker</h3>
+                                                                                <p class="as_margin0">Astrologer</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6 col-md-6">
+                                                                            <div class="as_customer_box text-center">
+                                                                                <span class="as_customer_img">
+                                                                                    <img src="{% static 'assets/images/customer1.jpg' %}" alt="">
+                                                                                    <span><img src="{% static 'assets/images/svg/quote1.svg' %}" alt=""></span>
+                                                                                </span>
+                                                                                <p class="as_margin0">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravidaesdisus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+                                                                                <h3 >John Parker</h3>
+                                                                                <p class="as_margin0">Astrologer</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6 col-md-6">
+                                                                            <div class="as_customer_box text-center">
+                                                                                <span class="as_customer_img">
+                                                                                    <img src="{% static 'assets/images/customer2.jpg' %}" alt="">
+                                                                                    <span><img src="{% static 'assets/images/svg/quote1.svg' %}" alt=""></span>
+                                                                                </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="as_sign_box">
+                                            <a href="zodiac_single.html">
+                                                <span class="as_sign">
+                                                <img src="{% static 'assets/images/svg/sign3.svg' %}" alt="">
+                                                </span>
+                                                <div>
+                                                    <h5>Gemini</h5>
+                                                    <p>Mar 21 - Apr 19</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="as_sign_box">
+                                            <a href="zodiac_single.html">
+                                                <span class="as_sign">
+                                                <img src="{% static 'assets/images/svg/sign4.svg' %}" alt="">
+                                                </span>
+                                                <div>
+                                                    <h5>Cancer</h5>
+                                                    <p>Mar 21 - Apr 19</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="as_sign_box">
+                                            <a href="zodiac_single.html">
+                                                <span class="as_sign">
+                                                <img src="{% static 'assets/images/svg/sign5.svg' %}" alt="">
+                                                </span>
+                                                <div>
+                                                    <h5>Leo</h5>
+                                                    <p>Mar 21 - Apr 19</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="as_sign_box">
+                                            <a href="zodiac_single.html">
+                                                <span class="as_sign">
+                                                <img src="{% static 'assets/images/svg/sign6.svg' %}" alt="">
+                                                </span>
+                                                <div>
+                                                    <h5>Virgo</h5>
+                                                    <p>Mar 21 - Apr 19</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <div class="as_sign_img text-center">
+                                        <img src="{% static 'assets/images/zodiac.png' %}" alt="" class="img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-12 col-sm-12 col-12">
+                                    <ul class="as_sign_ul as_sign_ul_right">
+                                        <li class="as_sign_box">
+                                            <a href="zodiac_single.html">
+                                                <span class="as_sign">
+                                                <img src="{% static 'assets/images/svg/sign7.svg' %}" alt="">
+                                                </span>
+                                                <div>
+                                                    <h5>Libra</h5>
+                                                    <p>Mar 21 - Apr 19</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="as_sign_box">
+                                            <a href="zodiac_single.html">
+                                                <span class="as_sign">
+                                                <img src="{% static 'assets/images/svg/sign8.svg' %}" alt="">
+                                                </span>
+                                                <div>
+                                                    <h5>Scorpio</h5>
+                                                    <p>Mar 21 - Apr 19</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="as_sign_box">
+                                            <a href="zodiac_single.html">
+                                                <span class="as_sign">
+                                                <img src="{% static 'assets/images/svg/sign9.svg' %}" alt="">
+                                                </span>
+                                                <div>
+                                                    <h5>Sagittarius</h5>
+                                                    <p>Mar 21 - Apr 19</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="as_sign_box">
+                                            <a href="zodiac_single.html">
+                                                <span class="as_sign">
+                                                <img src="{% static 'assets/images/svg/sign10.svg' %}" alt="">
+                                                </span>
+                                                <div>
+                                                    <h5>Capricorn</h5>
+                                                    <p>Mar 21 - Apr 19</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="as_sign_box">
+                                            <a href="zodiac_single.html">
+                                                <span class="as_sign">
+                                                <img src="{% static 'assets/images/svg/sign11.svg' %}" alt="">
+                                                </span>
+                                                <div>
+                                                    <h5>Capricorn</h5>
+                                                    <p>Mar 21 - Apr 19</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="as_sign_box">
+                                            <a href="zodiac_single.html">
+                                                <span class="as_sign">
+                                                <img src="{% static 'assets/images/svg/sign12.svg' %}" alt="">
+                                                </span>
+                                                <div>
+                                                    <h5>Pisces</h5>
+                                                    <p>Mar 21 - Apr 19</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+                                    <p class="as_margin0">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravidaesdisus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+                                    <h3 >John Parker</h3>
+                                    <p class="as_margin0">Astrologer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section> -->
+        <!-- <section class="as_whychoose_wrapper as_padderTop80 as_padderBottom50">
+            <div class="container">
+                <div class="row as_verticle_center">
+                    <div class="col-lg-3 col-md-12">
+                        <h1 class="as_heading">Why Choose Us</h1>
+                        <p class="as_font14 as_margin0">Consectetur adipiscing elit, sed do eiusmod tempor incididuesdeentiut.</p>
+                    </div>
+                    <div class="col-lg-9 col-md-12">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="as_whychoose_box text-center">
+                                    <span class="as_number"><span><span data-from="0" data-to="512"
+                                        data-speed="5000">512</span>+</span><img src="{% static 'assets/images/svg/shape.svg' %}" alt=""></span>
+                                    <h4>Qualified Astrologers</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="as_whychoose_box text-center">
+                                    <span class="as_number"><span><span data-from="0" data-to="62"
+                                        data-speed="5000">62</span>+</span><img src="{% static 'assets/images/svg/shape.svg' %}" alt=""></span>
+                                    <h4>Success Horoscope</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="as_whychoose_box text-center">
+                                    <span class="as_number"><span><span data-from="0" data-to="94"
+                                        data-speed="5000">94</span>+</span><img src="{% static 'assets/images/svg/shape.svg' %}" alt=""></span>
+                                    <h4>Offices Worldwide</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="as_whychoose_box text-center">
+                                    <span class="as_number"><span><span data-from="0" data-to="452"
+                                        data-speed="5000">452+</span>+</span><img src="assets/images/svg/shape.svg' %}" alt=""></span>
+                                    <h4>Trust by million clients</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="as_whychoose_box text-center">
+                                    <span class="as_number"><span><span data-from="0" data-to="12"
+                                        data-speed="5000">12</span>+</span><img src="{% static 'assets/images/svg/shape.svg' %}" alt=""></span>
+                                    <h4>Year experience</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="as_whychoose_box text-center">
+                                    <span class="as_number"><span><span data-from="0" data-to="652"
+                                        data-speed="5000">652+</span>+</span><img src="{% static 'assets/images/svg/shape.svg' %}" alt=""></span>
+                                    <h4>Type of horoscopes</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <!-- <section class="as_blog_wrapper as_padderTop80 as_padderBottom80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1 class="as_heading as_heading_center">Our Latest Blog</h1>
+                        <p class="as_font14 as_margin0 as_padderBottom20">Consectetur adipiscing elit, sed do eiusmod tempor incididuesdeentiut labore <br>etesde dolore magna aliquapspendisse and the gravida.</p>
+
+                        <div class="text-left">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                    <div class="as_blog_box">
+                                        <div class="as_blog_img">
+                                            <a href="blog_detail.html"><img src="{% static 'assets/images/blog1.jpg' %}" alt="" class="img-responsive"></a>
+                                            <span class="as_btn">July 29, 2020</span>
+                                        </div>
+                                        <ul>
+                                            <li><a href="javascript:;"><img src="{% static 'assets/images/svg/user.svg' %}" alt="">By - Admin</a></li>
+                                            <li><a href="javascript:;"><img src="{% static 'assets/images/svg/comment.svg' %}" alt="">0 comments</a></li>
+                                        </ul>
+                                        <h4 class="as_subheading"><a href="blog_left_detail.html"> Consectetur adipiscing elit sedeius mod tempor incididunt ut labore.</a></h4>
+                                        <p class="as_font14 as_margin0">Consectetur adipiscing elit, sed desdo eiusmod tempor incididuesdeentiut labore etesde doloesire esdesdeges magna aliquapspendisse and the gravida.</p>
+                                    </div>
+                                </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                <div class="as_blog_box">
+                                    <div class="as_blog_img">
+                                        <a href="blog_detail.html"><img src="{% static 'assets/images/blog2.jpg' %}" alt="" class="img-responsive"></a>
+                                        <span class="as_btn">July 29, 2020</span>
+                                    </div>
+                                    <ul>
+                                        <li><a href="javascript:;"><img src="{% static 'assets/images/svg/user.svg' %}" alt="">By - Admin</a></li>
+                                        <li><a href="javascript:;"><img src="{% static 'assets/images/svg/comment.svg' %}" alt="">0 comments</a></li>
+                                    </ul>
+                                    <h4 class="as_subheading"><a href="blog_left_detail.html"> Consectetur adipiscing elit sedeius mod tempor incididunt ut labore.</a></h4>
+                                    <p class="as_font14 as_margin0">Consectetur adipiscing elit, sed desdo eiusmod tempor incididuesdeentiut labore etesde doloesire esdesdeges magna aliquapspendisse and the gravida.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                <div class="as_blog_box">
+                                    <div class="as_blog_img">
+                                        <a href="blog_detail.html"><img src="{% static 'assets/images/blog3.jpg' %}" alt="" class="img-responsive"></a>
+                                        <span class="as_btn">July 29, 2020</span>
+                                    </div>
+                                    <ul>
+                                        <li><a href="javascript:;"><img src="{% static 'assets/images/svg/user.svg' %}" alt="">By - Admin</a></li>
+                                        <li><a href="javascript:;"><img src="{% static 'assets/images/svg/comment.svg' %}" alt="">0 comments</a></li>
+                                    </ul>
+                                    <h4 class="as_subheading"><a href="blog_left_detail.html"> Consectetur adipiscing elit sedeius mod tempor incididunt ut labore.</a></h4>
+                                    <p class="as_font14 as_margin0">Consectetur adipiscing elit, sed desdo eiusmod tempor incididuesdeentiut labore etesde doloesire esdesdeges magna aliquapspendisse and the gravida.</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <section class="as_product_wrapper as_padderBottom80 as_padderTop80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1 class="as_heading as_heading_center">Our Admin Team</h1>
+                        <!-- <p class="as_font14 as_margin0 as_padderBottom20"></p> -->
+
+                        <div class="row as_product_slider">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="as_product_box">
+                                    <div class="as_product_img">
+                                        <img src="{% static 'assets/images/akshatpandya.jpeg' %}" alt="" class="img-responsive">
+                                        <ul>
+                                            <li><a href="{%url 'astroakshat:takeappointment' %}"><i class="fa fa-calendar"> Take Appointment For Talk</i></a></li>
+                                        </ul>
+                                    </div> 
+                                    <!-- <span><img src="{% static 'assets/images/rating.png' %}" alt=""></span> -->
+                                    <h4 class="as_subheading">Akshat Pandya</h4>
+                                    <!-- <span class="as_price">$20 <del>$80</del> <span class="as_orange">(60% off)</span></span> -->
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="as_product_box">
+                                    <div class="as_product_img">
+                                        <img src="{% static 'assets/images/hashmukhpandya.jpeg' %}" style="height: 328px;" alt="" class="img-responsive">
+                                        <ul>
+                                            <li><a href="{% url 'astroakshat:poojaappointment' %}"><i class="fa fa-calendar"> Take Appointment For Pooja</i></a></li>
+                                        </ul>
+                                    </div> 
+                                    <!-- <span><img src="{% static 'assets/images/rating.png' %}" alt=""></span> -->
+                                    <h4 class="as_subheading">Hashmukh Pandya</h4>
+                                    <!-- <span class="as_price">$20 <del>$80</del> <span class="as_orange">(60% off)</span></span> -->
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+         
+        {% endblock %} 
+        

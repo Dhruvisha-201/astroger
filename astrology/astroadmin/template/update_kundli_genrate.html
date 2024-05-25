@@ -1,0 +1,65 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="section-header-breadcrumb-content">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Update  Kundli</h3>
+                        </div>
+                        <div class="card-body">
+                           
+                                <a href="{% url 'astroadmin:kundli_list' %}">
+                                    <button class="btn btn-primary" style="width:20%;margin-left:80%;"> Back To Kundli List</button>
+                                </a>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <form method="POST" href = "{% url 'astroadmin:update_genrate_kundli' id=selectekundlidid.id %}">
+                                            {% csrf_token %}
+                                            <div class="col-sm-12">
+                                                <div class="col-md-6">
+                                                    Name :-             {{selectekundlidid.kundli_id.kundli_name}} <br>
+                                                    Date Of Birth :-    {{selectekundlidid.kundli_id.kundli_DOB}} <br>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    Time of Birth :-    {{selectekundlidid.kundli_id.kundli_time_of_birth}} <br>
+                                                    Place of Birth :-   {{selectekundlidid.kundli_id.kundli_City.City_Name}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Title</label>
+                                                <input type="text" name="kundli_title" placeholder="Enter Title" class="form-control" id="" value="{{selectekundlidid.title}}" required>
+                                            </div>
+                                          
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <textarea type="text" name="kundli_desc" class="form-control" rows="5" placeholder="Write description here">{{selectekundlidid.description}}</textarea>
+                                            </div>
+                                                                                      
+                                            <br>
+                                            <button type="submit" class="btn btn-primary" style="width:20%;margin-left:80%;"> Submit </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    
+</div>
+{% endblock %}

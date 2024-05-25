@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<!-- Mirrored from kamleshyadav.com/html/astrology/version-2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Mar 2023 08:28:58 GMT -->
+<head>
+    <title>Astrology</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- stylesheet -->
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/js/plugin/slick/slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/js/plugin/airdatepicker/datepicker.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/fonts.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}"/>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" type="image/x-icon">
+</head>
+<body>
+    <div class="as_loader">
+        <img src="{% static 'assets/images/loader.png' %}" alt="" class="img-responsive">
+    </div> 
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+                <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body">
+                <div class="as_login_box active">
+                    <form method="POST"  class="needs-validation" novalidate="" method="post" action="/login/">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" name="email" placeholder="Enter email" class="form-control" tabindex="1" id=""required autofocus value="{{astro_email_cookie}}">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="Password" placeholder="Enter password here" class="form-control" id=""tabindex="2" required value="{{admin_password_cookie}}">
+                        </div>
+                        
+                        {% for message in messages %}
+                        {%if "Suc_msg" in message.tags %}
+                            <div class="message">
+                                <center><p style = "color:rgb(69, 241, 30)"> {{message}} </p></center>
+                               
+                            </div>
+                        {%endif%}
+                        {% endfor %}
+                        {% for message in messages %}
+                        {%if "invalidpass" in message.tags %}
+                            <div class="message">
+                                <center><p style = "color:rgb(235, 8, 8)"> {{message}} </p></center>
+                               
+                            </div>
+                        {%endif%}
+                        {% endfor %}
+                        
+                        <div class="form-group">
+                            <div class="as_login_data">
+                                <label>Remember me
+                                    <input type="checkbox"  value="" name="remember" class="custom-control-input" tabindex="3" >
+                                    <!-- <label class="custom-control-label" for="remember-me">Remember Me</label> -->
+                                    <span class="checkmark"></span>
+                                </label>
+                                <a href="{% url 'astroakshat:forgot_password' %}">Forgot password ?</a>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="as_btn" tabindex="4">
+                              Login
+                            </button>
+                          </div>
+                          
+                        <!-- <div class="text-center">
+                            <a href="/client_index/" class="as_btn">login</a>
+                        </div> -->
+                    </form>
+                    <p class="text-center as_margin0 as_padderTop20">Create An Account ? <a href="{% url 'astroakshat:register' %}" class="as_orange as_signup">SignUp</a></p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+ <!-- javascript -->
+ <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+ <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+ <script src="{% static 'assets/js/plugin/slick/slick.min.js' %}"></script>
+ <script src="{% static 'assets/js/plugin/countto/jquery.countTo.js' %}"></script>
+ <script src="{% static 'assets/js/plugin/airdatepicker/datepicker.min.js' %}"></script>
+ <script src="{% static 'assets/js/plugin/airdatepicker/i18n/datepicker.en.js' %}"></script>
+ <script src="{% static 'assets/js/custom.js' %}"></script>  
+ </body>
+ 
+ <!-- Mirrored from kamleshyadav.com/html/astrology/version-2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Mar 2023 08:29:33 GMT -->
+ </html>

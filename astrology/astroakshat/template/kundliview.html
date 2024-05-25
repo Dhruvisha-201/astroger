@@ -1,0 +1,138 @@
+{% extends 'client_header.html' %}
+{%load static%}
+{% block content %}
+        
+        <section class="as_know_sign_wrapper as_padderBottom80 as_padderTop80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1 class="as_heading as_heading_center">Know Your Kundli</h1>
+                        <!-- <p class="as_font14 as_margin0 as_padderBottom50">Consectetur adipiscing elit, sed do eiusmod tempor incididuesdeentiut labore <br>etesde dolore magna aliquapspendisse and the gravida.</p> -->
+                
+                        <form method="POST" action="{% url 'astroakshat:kundlirequest' %}">
+                            
+                            {% csrf_token %}
+                            <div class="as_sign_form text-left">
+                                <ul> 
+                                    <li class="as_form_box">
+                                        <h3 class="as_subheading">Name</h3>
+                                        <div class="as_input_feild">
+                                            <input type="text" name="kundli_name" class="form-control" placeholder="Enter Your name" id="">
+                                        </div>
+                                    </li>
+                                    <li class="as_form_box">
+                                        <h3 class="as_subheading">Date Of Birth</h3>
+                                        <div class="as_input_feild">
+                                            <input type="date" name="kundli_DOB" class="form-control" placeholder="DD/MM/YYYY" id="">
+                                        </div>
+                                    </li>
+                                    <li class="as_form_box">
+                                        <h3 class="as_subheading">Time Of Birth</h3>
+                                        <div class="as_input_feild">
+                                            <input type="time" name="kundli_time_of_birth" class="form-control" placeholder="08:00" id="">
+                                        </div>
+                                    </li>
+                                    <li class="as_form_box">
+                                        <h3 class="as_subheading">Place Of Birth</h3>
+                                        <div class="as_input_feild">
+                                            
+                                            <select class="form-control" name="kundli_City">
+                                                <option value="">Select Birth City</option>
+                                                {% for city in allcity %}
+                                                <option value="{{city.id}}">{{city.City_Name}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div> 
+                                    </li>
+                                    <li class="as_form_box">
+                                    <button type="submit" class="as_btn">Send Request</button>
+    
+                                    <!-- <a href="javascript:;" class="as_btn">find zodiac</a> -->
+                                    </li>
+                                </ul>
+                                {% for message in messages %}
+                                {%if "kundligenrates" in message.tags %}
+                                    <div class="message" id="msgsec">
+                                        <center><p style = "color: green;"> {{message}} </p></center>
+                                        <!-- <a href="#" class="del-msg">&times;</a> -->
+                                    </div>
+                                {%endif%}
+                                {% endfor %}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="col-lg-12 text-center">
+            <h1 class="as_heading as_heading_center">Your Genrated Kundli List</h1>
+        </div>
+        
+        <section class="as_zodiac_single_wrapper as_padderTop80 as_padderBottom60">
+            {% for createkundli in logcreate_kundli %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-12 col-sm-12">
+                        <div class="as_zodiac_single_inner">
+                            
+                            <div class="as_tab_wrapper">
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="today" role="tabpanel" aria-labelledby="Today">
+                                        <hr>
+                                       <h3 class="as_subheading as_orange"> Name :- {{createkundli.kundli_id.kundli_name}}</h3>
+                                       <h3 class="as_subheading as_orange"> Date Of Birth :- {{createkundli.kundli_id.kundli_DOB}}</h3>
+                                       <h3 class="as_subheading as_orange"> Time Of Birth :- {{createkundli.kundli_id.kundli_time_of_birth}}</h3>
+                                       <h3 class="as_subheading as_orange"> Palce of Birth :- {{createkundli.kundli_id.kundli_City.City_Name}}</h3>
+                                      
+                                       <p class="as_font14 as_padderBottom20">{{createkundli.title}}</p>
+                                       <p class="as_font14 as_padderBottom20">{{createkundli.description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <center>No Data Found</center>
+            {% endfor %}
+            <br>
+            <br>
+        </section>
+        <br>
+        <br>
+        
+
+        <div class="col-lg-12 text-center">
+            <h1 class="as_heading as_heading_center">Your Request Genrated Kundli List</h1>
+        </div>
+        <section class="as_zodiac_single_wrapper as_padderTop80 as_padderBottom60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-12 col-sm-12">
+                        <div class="as_zodiac_single_inner">
+                            <div class="as_tab_wrapper">
+                                <div class="tab-content" id="myTabContent">
+                                    {% for kundli in logkundli %}
+                                    <div class="tab-pane fade show active" id="today" role="tabpanel" aria-labelledby="Today">
+                                       <h3 class="as_subheading as_orange">Name :- {{kundli.kundli_name}}</h3>
+                                       <h3 class="as_subheading as_orange">Date Of Birth :- {{kundli.kundli_DOB}}</h3>
+                                       <h3 class="as_subheading as_orange">Time Of Birth :- {{kundli.kundli_time_of_birth}}</h3>
+                                       <h3 class="as_subheading as_orange">Place Of Birth :- {{kundli.kundli_City.City_Name}}</h3>
+                                       <h3 class="as_subheading as_orange">Request Status :- Pending</h3>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    {% empty %}
+                                    <p>No Data Found</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+          
+        {% endblock %}
